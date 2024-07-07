@@ -56,6 +56,17 @@ body {
 }
 
 .button:hover {
-    scale: 1.1;
+    scale: 1.05;
     filter: drop-shadow(0 6px 0 var(--backgroundcolorv2));
+}
+
+@media(max-width: 800px) {
+    .timer {
+        padding: 24px 48px;
+    }
+
+    .button:hover {
+        scale: 1;
+        filter: drop-shadow(0 5px 0 var(--backgroundcolorv2));
+    }
 }

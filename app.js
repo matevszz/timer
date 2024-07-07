@@ -2,6 +2,16 @@ const time = document.querySelector('.time');
 const start = document.querySelector('#start');
 const stop = document.querySelector('#stop');
 const reset = document.querySelector('#reset');
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        button.style.scale = 0.9;
+        setTimeout(() => {
+            button.style.scale = 1;
+        }, 300);
+    })
+});
 
 let seconds = 0;
 let minutes = 0;
