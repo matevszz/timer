@@ -61,12 +61,16 @@ body {
 }
 
 @media(max-width: 800px) {
+    body {
+        overflow: hidden;
+    }
+    
     .timer {
+        scale: .8;
         padding: 24px 48px;
     }
 
     .button:hover {
         scale: 1;
-        filter: drop-shadow(0 5px 0 var(--backgroundcolorv2));
     }
 }
