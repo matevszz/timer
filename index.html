@@ -8,7 +8,11 @@
     <script defer src="app.js"></script>
 </head>
 <body>
-    <main class="timer">
+    <div class="type">
+        <button id="timepiece-btn" class="timer-type">Timepiece</button>
+        <button id="timer-btn" class="timer-type">Timer</button>
+    </div>
+    <main class="timepiece">
             <div class="h1">
                 <h1>Count your time</h1>
             </div>
@@ -20,6 +24,23 @@
                 <div class="button" id="stop">Stop</div>
                 <div class="button" id="reset">Reset</div>
             </div>
+    </main>
+    <main class="timer">
+        <div class="h1">
+            <h1>Count till 0</h1>
+        </div>
+        <div class="selecting-time">
+            <input type="number" placeholder="Type minutes..." id="minutes">
+            <input type="number" placeholder="Type seconds..." id="seconds">
+        </div>
+        <div>
+            <h2 class="time-timer">0:00</h2>
+        </div>
+        <div class="buttons">
+            <div class="button" id="start-timer">Start</div>
+            <div class="button" id="stop-timer">Stop</div>
+            <div class="button" id="reset-timer">Reset</div>
+        </div>
     </main>
 </body>
 </html>

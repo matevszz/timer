@@ -18,12 +18,14 @@ body {
     height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.timer {
+.timepiece {
     position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +35,10 @@ body {
     border-radius: 20px;
     border: 1px rgba(255, 255, 255, 0.5) solid;
     backdrop-filter: blur(20px);
+}
+
+.timepiece.remove {
+    display: none;
 }
 
 .time {
@@ -60,9 +66,83 @@ body {
     filter: drop-shadow(0 6px 0 var(--backgroundcolorv2));
 }
 
+.type {
+    max-width: 340px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timer-type {
+    font-size: 18px;
+    width: 150px;
+    height: 32px;
+    color: var(--backgroundcolor);
+    background: white;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    scale: 1;
+}
+
+#timepiece-btn {
+    scale: 1;
+    color: white;
+    background-color: var(--backgroundcolorv2);
+    cursor: pointer;
+}
+
+#timer-btn {
+    scale: .8;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+#timer-btn:hover {
+    scale: 1;
+}
+
+.timer {
+    display: none;
+}
+
+.timer.show {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px 64px;
+    background-color: rgba(255, 255, 255, .15);
+    border-radius: 20px;
+    border: 1px rgba(255, 255, 255, 0.5) solid;
+    backdrop-filter: blur(20px);
+}
+
+.selecting-time {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+input {
+    color: var(--backgroundcolor);
+    background: white;
+    border: none;
+    border-radius: 2px;
+    width: 200%;
+    height: 200%;
+    appearance: none;
+}
+
 @media(max-width: 800px) {
     body {
         overflow: hidden;
+    }
+
+    .timepiece {
+        scale: .8;
+        padding: 24px 48px;
     }
     
     .timer {
