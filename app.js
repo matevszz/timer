@@ -108,7 +108,13 @@ const timingDown = () => {
         else if(timerSeconds < 10) {
             timeTimer.innerHTML = (timerMinutes + ':' + 0 + timerSeconds);
         }
+        if(timerMinutes === -1) {
+            clearInterval(timerCountDown);
+            timeTimer.innerHTML = '0:00';
+            alert('END OF TIME!')
+        }
     }, 1000);
+    
 }
 
 startTimer.addEventListener('click', () => {
