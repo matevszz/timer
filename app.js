@@ -17,14 +17,23 @@ buttons.forEach(button => {
 
 let seconds = 0;
 let minutes = 0;
+let miliseconds = 0;
 
 let timer;
 
 const timing = () => {
     timer = setInterval(() => {
-        seconds++;
-        time.innerHTML = (minutes + ':'+ 0 + seconds);
-        if(seconds === 60) {
+        miliseconds++;
+        time.innerHTML = (minutes + ':'+ 0 + seconds + ':' + miliseconds);
+        if(miliseconds === 100) {
+            seconds++
+            miliseconds = 0;
+            time.innerHTML = (minutes + ':' + 0 + seconds + ':' + miliseconds);
+        }
+        else if(miliseconds < 10) {
+            time.innerHTML = (minutes + ':' + 0 + seconds + ':' + 0 + miliseconds);
+        }
+        else if(seconds === 60) {
             minutes++;
             seconds = 0;
             time.innerHTML = (minutes + ':' + 0 + seconds);
@@ -32,7 +41,7 @@ const timing = () => {
         else if(seconds >= 10) {
             time.innerHTML = (minutes + ':' + seconds);
         }
-    }, 1000);
+    }, 10);
 }
 
 start.addEventListener('click', () => {
@@ -47,7 +56,8 @@ reset.addEventListener('click', () => {
     clearInterval(timer);
     seconds = 0;
     minutes = 0;
-    time.innerHTML = (minutes + ':' + 0 + seconds);
+    miliseconds = 0;
+    time.innerHTML = (minutes + ':' + 0 + seconds + ':' + 0 + miliseconds);
 });
 
 const timerBtn = document.querySelector('#timer-btn');
