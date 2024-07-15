@@ -18,6 +18,7 @@ buttons.forEach(button => {
 let seconds = 0;
 let minutes = 0;
 let miliseconds = 0;
+let timerRunning = false;
 
 let timer;
 
@@ -45,15 +46,20 @@ const timing = () => {
 }
 
 start.addEventListener('click', () => {
-    timing();
+    if(!timerRunning) { 
+        timerRunning = true;
+        timing();
+    }
 });
 
 stop.addEventListener('click', () => {
     clearInterval(timer);
+    timerRunning = false;
 });
 
 reset.addEventListener('click', () => {
     clearInterval(timer);
+    timerRunning = false;
     seconds = 0;
     minutes = 0;
     miliseconds = 0;
@@ -100,6 +106,8 @@ let timerCountDown;
 let timerSeconds;
 let timerMinutes;
 
+let countDownRunning = false;
+
 const timingDown = () => {
     let timerSeconds = Number(inputSeconds.value);
     let timerMinutes = Number(inputMinutes.value);
@@ -128,21 +136,26 @@ const timingDown = () => {
 }
 
 startTimer.addEventListener('click', () => {
-    if(Number.isNaN(timerMinutes) || Number.isNaN(timerSeconds)) {
-        alert('You have to input value in numbers!');
-        timeTimer.innerHTML = '0:00';
-    }
-    else {
-        timingDown();
+    if(!countDownRunning){
+        if(Number.isNaN(timerMinutes) || Number.isNaN(timerSeconds)) {
+            alert('You have to input value in numbers!');
+            timeTimer.innerHTML = '0:00';
+        }
+        else {
+            countDownRunning = true;
+            timingDown();
+        }
     }
 });
 
 stopTimer.addEventListener('click', () => {
     clearInterval(timerCountDown);
+    countDownRunning = false;
 });
 
 resetTimer.addEventListener('click', () => {
     clearInterval(timerCountDown);
+    countDownRunning = false;
     timerMinutes = 0;
     timerSeconds = 0;
     timeTimer.innerHTML = (timerMinutes + ':' + 0 + timerSeconds);
